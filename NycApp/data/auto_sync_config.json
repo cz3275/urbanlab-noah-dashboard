@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "interval_hours": 168,
+  "last_sync": "2025-10-07T18:15:17.360094",
+  "sync_census": true,
+  "sync_pluto": true
+}
