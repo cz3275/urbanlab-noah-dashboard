@@ -28,7 +28,7 @@ def fetch_pluto_residential(year_min=None, year_max=None, borough=None,
     if year_max is not None:
         where_clauses.append(f"yearbuilt <= {int(year_max)}")
     if borough:
-        # 可选值：MANHATTAN, BRONX, BROOKLYN, QUEENS, STATEN ISLAND
+        # Optional：MANHATTAN, BRONX, BROOKLYN, QUEENS, STATEN ISLAND
         where_clauses.append(f"upper(borough) = '{borough.upper()}'")
     where_sql = " AND ".join(where_clauses)
 
@@ -55,7 +55,7 @@ def fetch_pluto_residential(year_min=None, year_max=None, borough=None,
         frames.append(pd.DataFrame(data))
         if len(data) < page_size:
             break
-        time.sleep(sleep)  # 温和一点
+        time.sleep(sleep)  
 
     if not frames:
         return pd.DataFrame(columns=select_fields)
