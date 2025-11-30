@@ -74,16 +74,16 @@ def fetch_pluto_residential(year_min=None, year_max=None, borough=None,
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch NYC PLUTO residential attributes via API.")
-    parser.add_argument("--year-min", type=int, default=None, help="最小建成年份（含）")
-    parser.add_argument("--year-max", type=int, default=None, help="最大建成年份（含）")
+    parser.add_argument("--year-min", type=int, default=None, help="Min Year_Built")
+    parser.add_argument("--year-max", type=int, default=None, help="Max Year_Built")
     parser.add_argument("--borough", type=str, default=None,
-                        help="行政区，如 MANHATTAN/BRONX/BROOKLYN/QUEENS/STATEN ISLAND")
-    parser.add_argument("--limit", type=int, default=100000, help="最大抓取条数（自动分页）")
-    parser.add_argument("--page-size", type=int, default=5000, help="分页大小")
-    parser.add_argument("--out", type=str, default="pluto_residential.csv", help="输出 CSV 文件名")
+                        help="City，Ex MANHATTAN/BRONX/BROOKLYN/QUEENS/STATEN ISLAND")
+    parser.add_argument("--limit", type=int, default=100000, help="Max fatch number")
+    parser.add_argument("--page-size", type=int, default=5000, help="Page Size")
+    parser.add_argument("--out", type=str, default="pluto_residential.csv", help="CSV names")
     args = parser.parse_args()
 
-    token = os.getenv("SOCRATA_APP_TOKEN")  # 可选
+    token = os.getenv("SOCRATA_APP_TOKEN")  
     df = fetch_pluto_residential(
         year_min=args.year_min,
         year_max=args.year_max,
